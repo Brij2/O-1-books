@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <title>O(1) Books</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      input[type="text"],
+      input[type="number"] {
+        padding: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
+      .search-container {
+        float: right;
+        margin-bottom: 20px;
+      }
+      .search-container input[type="text"] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+      }
+      .search-container button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+      }
+      .search-container button:hover {
+        background: #ccc;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/styles.min.css" />
+  </head>
+  <body>
+     <div id="login-main" style="display: block;">
+      <div  class="lgp-hd">
+        <h2><strong>welcome to O(1) login page</strong></h2>
+        <h5><strong>login to view Dashboard</strong></h5>
+      </div>
+      <div class="container login-cont">
+        <div class="row">
+          <div
+            class="col-10 col-sm-6 col-md-4 col-lg-4 offset-1 offset-sm-3 offset-md-4 offset-lg-4 login-col"
+          >
+            <i class="icon ion-lock-combination"></i>
+            <form class="login-form">
+              <div class="form-group mb-3">
+                <input
+                  class="form-control form-control-lg lg-frc"
+                  type="text"
+                  required=""
+                  id="username" 
+                  placeholder="Username"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <input
+                  class="form-control form-control-lg lg-frc"
+                  type="password"
+                  required=""
+                  placeholder="Enter Password"
+                  id="password" 
+                />
+              </div>
+            </form>
+            <div class="form-group mb-3">
+              <button onclick="login()" class="btn btn-light btn-lg login-btn" >
+                <strong>Login</strong>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+
+
+
+      <div>
+        <div id="book-management" style="background-color: white; margin: 5%; padding: 10%; display:none;">
+          <nav class="navbar navbar-expand-lg ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+              </ul>
+                <button class="btn btn-outline-danger my-2 my-sm-0" onclick="logout()" >Logout</button>
+            </div>
+          </nav>
+          <h1>Library Management System</h1>
+          
+          <form id="book-form">
+            <label for="book-name">Book Name:</label>
+            <input type="text" id="book-name" name="book-name" required />
+            <br />
+    
+            <label for="rack-number">Rack Number:</label>
+            <input type="number" id="rack-number" name="rack-number" required />
+            <br />
+    
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required />
+            <br />
+    
+            <button type="button" onclick="addBook()">Add Book</button>
+            <button type="button" onclick="clearForm()">Clear Form</button>
+          </form>
+    
+          <div class="search-container">
+            <input
+              type="text"
+              class="border-primary"
+              placeholder="Search..."
+              id="search-term"
+              onkeyup="searchBooks()"
+            />
+            <button type="button" class="bg-success" onclick="clearForm()">Clear Search</button>
+          </div>
+          <table id="book-list" style="display:none;">
+            <br>
+            <thead>
+              <tr>
+                <th>Book Name</th>
+                <th>Rack Number</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+
+          <table id="book-table">
+            <thead>
+              <tr>
+                <th>Book Name</th>
+                <th>Rack Number</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>
