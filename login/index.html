@@ -126,16 +126,8 @@
 
       <div>
         <div id="book-management" style="background-color: white; margin: 5%; padding: 10%; display:none;">
-          <nav class="navbar navbar-expand-lg ">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-              </ul>
+          <nav class="float-right">
                 <button class="btn btn-outline-danger my-2 my-sm-0" onclick="logout()" >Logout</button>
-            </div>
           </nav>
           <h1>Library Management System</h1>
           
@@ -145,12 +137,14 @@
             <br />
     
             <label for="rack-number">Rack Number:</label>
-            <input type="number" id="rack-number" name="rack-number" required />
+            <input type="text" id="rack-number" name="rack-number" required />
             <br />
     
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" required />
             <br />
+
+            
     
             <button type="button" onclick="addBook()">Add Book</button>
             <button type="button" onclick="clearForm()">Clear Form</button>
