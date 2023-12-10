@@ -12,6 +12,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build and Deploy
-      uses: edwardtufte/et-gh-pages@master
+      uses: edwardtufte/et-gh-pages@main
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
